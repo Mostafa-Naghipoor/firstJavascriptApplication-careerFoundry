@@ -1,0 +1,12 @@
+.btn{
+     color:rgb(230, 171, 100);
+     background-color: rgb(73, 51, 139);
+     font-size: 2rem;
+     width: 200px;
+     height: 100px;
+     font-weight: bold;
+     
+}
+ul{
+    list-style-type: none;
+}

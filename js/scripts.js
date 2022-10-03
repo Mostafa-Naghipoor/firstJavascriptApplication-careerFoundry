@@ -16,17 +16,30 @@ let pokemonRepository =(function(){
 
     function getAll() {
         return pokemonList;
-      }
+    };
 
-      function add(pokemon) { 
-        if (typeof pokemon === 'object' && 'name' in pokemon){
+    function add(pokemon) { 
+      if (typeof pokemon === 'object' && 'name' in pokemon){
         pokemonList.push(pokemon);
       }
-    }
+    };
+
+    function addListItem(pokemon) { 
+      var pokemonList = document.querySelector("ul");
+      var listItem = document.createElement('li');
+      var button = document.createElement('button');
+      button.innerText= pokemon.name;
+      button.classList.add("btn"); 
+      listItem.appendChild(button);
+      pokemonList.appendChild(listItem);
+
+    };
+
 
       return {
         add: add,
-        getAll: getAll
+        getAll: getAll,
+        addListItem: addListItem,
       }
 
 })()
@@ -36,14 +49,6 @@ pokemonRepository.add({name:'Ponyta', height:
 
 
 pokemonRepository.getAll().forEach(function(pokemon){
+  pokemonRepository.addListItem(pokemon);
 
-    if(pokemon.height >= 1) {
-        document.write(pokemon.name + " (height: " + pokemon.height + " m) - Wow, that is big!" + "<br>")
-    }
-    else if (pokemon.height >= 0.8 && pokemon.height < 1){
-        document.write(pokemon.name + " (height: " + pokemon.height + " m) - That is a medium pokemon!" + "<br>")
-    }
-    else {
-        document.write(pokemon.name + " (height: " + pokemon.height + " m)- That is a small pokemon!" + "<br>")
-    }  
 })
